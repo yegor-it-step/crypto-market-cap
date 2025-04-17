@@ -1,10 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
-import { CoinTableComponent } from "./components/coin-table/coin-table.component";
 import { useSearchParams } from "react-router";
-import { useTranslation } from "react-i18next";
 import { ChangeEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "./store/slices/counter-slice";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 
@@ -14,8 +11,7 @@ enum LOCAL_STORAGE_KEYS {
   USER = "user",
 }
 
-function App({ children }) {
-  const { t } = useTranslation();
+function App() {
   const dispatch = useAppDispatch();
 
   const userData = useAppSelector((state) => state.userReducer);
@@ -60,50 +56,49 @@ function App({ children }) {
   };
 
   return (
+    // <QueryClientProvider client={queryClient}>
+    //   <div>
+    //     <div>
+    //       {children}
+    //       <input
+    //         type="text"
+    //         placeholder="имя"
+    //         onChange={(event) => {
+    //           handleOnFormInputChange(event, "name");
+    //         }}
+    //       />
+    //       <input
+    //         type="text"
+    //         placeholder="фамилия"
+    //         onChange={(event) => {
+    //           handleOnFormInputChange(event, "surname");
+    //         }}
+    //       />
+    //       <input
+    //         type="text"
+    //         placeholder="номер телефона"
+    //         onChange={(event) => {
+    //           handleOnFormInputChange(event, "phoneNumber");
+    //         }}
+    //       />
+    //       <input
+    //         type="email"
+    //         placeholder="e-mail"
+    //         onChange={(event) => {
+    //           handleOnFormInputChange(event, "email");
+    //         }}
+    //       />
+    //       <input type="text" />
+    //     </div>
+
+    //     <button>Sign up</button>
+    //     <button onClick={handleOnAddItemButtonClick}>ADD ITEM</button>
+    //   </div>
+    //   {/* <CoinTableComponent /> */}
+    // </QueryClientProvider>
     <QueryClientProvider client={queryClient}>
       <div>
         <div>
-          {children}
-          <input
-            type="text"
-            placeholder="имя"
-            onChange={(event) => {
-              handleOnFormInputChange(event, "name");
-            }}
-          />
-          <input
-            type="text"
-            placeholder="фамилия"
-            onChange={(event) => {
-              handleOnFormInputChange(event, "surname");
-            }}
-          />
-          <input
-            type="text"
-            placeholder="номер телефона"
-            onChange={(event) => {
-              handleOnFormInputChange(event, "phoneNumber");
-            }}
-          />
-          <input
-            type="email"
-            placeholder="e-mail"
-            onChange={(event) => {
-              handleOnFormInputChange(event, "email");
-            }}
-          />
-          <input type="text" />
-        </div>
-
-        <button>Sign up</button>
-        <button onClick={handleOnAddItemButtonClick}>ADD ITEM</button>
-      </div>
-      {/* <CoinTableComponent /> */}
-    </QueryClientProvider>
-       <QueryClientProvider client={queryClient}>
-      <div>
-        <div>
-          {children}
           <input
             type="text"
             placeholder="имя"
